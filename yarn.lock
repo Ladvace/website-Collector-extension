@@ -9233,6 +9233,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rooks@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/rooks/-/rooks-3.6.0.tgz#b048c9730ad0c19e76abb29539509e1b636cbe50"
+  integrity sha512-vtgMrMw+nYZrkhQcwh/ZibVhJ0uQMoQnkNOxV7vb2qgYjXZ3pWApDcCNwwY8iIg3YKtOY4x/J9DDJmIAz5itng==
+
 rsvp@^4.8.4:
   version "4.8.5"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"

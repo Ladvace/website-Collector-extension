@@ -1,0 +1,46 @@
+{
+  "name": "Strong Password Generator",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "Strong password generator",
+  "icons": {
+    "512": "logo512.png"
+  },
+  "browser_action": {
+    "default_icon": "logo512.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+        // "http://*/*",
+        // "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_end" // Pay attention to this line
+    }
+  ],
+  "web_accessible_resources": [
+    "/*.svg",
+    "/*.png"
+  ],
+  // "permissions": [
+  //   {
+  // "fileSystem": [
+  //   "write"
+  // ]
+  //   }
+  // ],
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  }
+}

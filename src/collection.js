@@ -11,13 +11,38 @@ const CollectionsContainer = styled.div`
   height: 20px;
 `;
 
-function Collection({ collectionElements, name }) {
+function Collection({ collectionElements, name, collections, setCollections }) {
+  const removeCollection = (collection) => {
+    const indexOfElement = collections.indexOf(collection);
+
+    let tempCollections = collections;
+
+    if (indexOfElement > -1) {
+      setCollections(tempCollections.splice(indexOfElement, 1));
+    }
+  };
   return (
     <CollectionsContainer>
-      <h1>{name}s</h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          height: 20,
+        }}
+      >
+        <button onClick={() => removeCollection(name, Collections)}>-</button>
+        <h2
+          style={{
+            margin: 0,
+          }}
+        >
+          {name}
+        </h2>
+        <button>+</button>
+      </div>
       <>
-      {collectionElements &&
-        collectionElements.map((site) => <collectionElement site={site} />)}
+        {collectionElements &&
+          collectionElements.map((site) => <collectionElement site={site} />)}
       </>
     </CollectionsContainer>
   );

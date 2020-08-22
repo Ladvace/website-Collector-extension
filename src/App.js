@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import styled from "styled-components";
+import { useKey } from "rooks";
 import { Counter } from "./features/counter/Counter";
 import Collection from "./collection";
 import "./App.css";
@@ -25,6 +26,16 @@ const CollectionsContainer = styled.div`
 function App() {
   const [collections, setCollections] = useState([]);
   const [collectionName, setCollectionName] = useState(undefined);
+  const createCollection = () => {
+    const existCollection = collections.some((x) => x.name === collectionName);
+
+    if (collectionName && !existCollection) {
+      setCollections([...collections, { name: collectionName, sites: [] }]);
+    }
+  };
+
+  useKey(["Enter"], createCollection);
+
   return (
     <Container>
       <AddSection>
@@ -32,19 +43,7 @@ function App() {
           style={{
             marginRight: 5,
           }}
-          
-          onClick={() => {
-            const existCollection = collections.some(
-              (x) => x.name === collectionName
-            );
-
-            if (collectionName && !existCollection) {
-              setCollections([
-                ...collections,
-                { name: collectionName, sites: [] },
-              ]);
-            }
-          }}
+          onClick={createCollection}
         >
           +
         </button>
@@ -55,6 +54,8 @@ function App() {
           collections.map((collection) => (
             <Collection
               name={collection.name}
+              collections={collections}
+              setCollections={setCollections}
               collectionElements={collection.sites}
             />
           ))}
